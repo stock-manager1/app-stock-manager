@@ -27,15 +27,18 @@ class LoginPage extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                    children: const <Widget>[
                       Text(
                         "Login",
                         style: TextStyle(
                           fontFamily: 'Poppins',
-                          fontSize: 32,
+                          fontSize: 40,
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
                         ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 1, bottom: 60),
                       ),
                     ],
                   ),
@@ -96,8 +99,24 @@ class LoginPage extends StatelessWidget {
                                 ),
                                 'Problemas de Acesso?'),
                           ),
-                          Padding(padding: EdgeInsets.only(bottom: 52)),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: 20, left: 0, right: 20, bottom: 60)),
                         ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Container(
+                        height: 179,
+                        width: 179,
+                        child: Image.asset(
+                          "assets/Stock_Manager_logo.png",
+                        ),
+                      ),
+                      SizedBox(
+                        height: 100,
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -115,7 +134,7 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
