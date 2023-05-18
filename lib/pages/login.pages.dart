@@ -44,20 +44,27 @@ class LoginPage extends StatelessWidget {
                     Column(
                       children: [
                         TextFormField(
-                          autofocus: false,
+                          autofocus: true,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
                             hintText: "Email",
                             hintStyle: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black45,
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                             ),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25)),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 20,
                             fontFamily: 'Poppins',
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         SizedBox(
@@ -68,18 +75,24 @@ class LoginPage extends StatelessWidget {
                           keyboardType: TextInputType.text,
                           obscureText: true,
                           decoration: InputDecoration(
-                            hintText: "Senha",
+                            filled: true,
                             fillColor: Colors.white,
+                            hintText: "Senha",
                             hintStyle: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black45,
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
                             ),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25)),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 20,
                             fontFamily: 'Poppins',
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                         Row(
@@ -87,12 +100,12 @@ class LoginPage extends StatelessWidget {
                           children: <Widget>[
                             TextButton(
                               onPressed: () {
-                                // Adicione aqui a lógica de login
+                                //  Adicione aqui a lógica de login
                               },
                               child: Text(
                                 'Problemas de Acesso?',
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),
@@ -118,13 +131,7 @@ class LoginPage extends StatelessWidget {
                             "assets/Stock_Manager_logo.png",
                           ),
                         ),
-                        Padding(
-                            padding: EdgeInsets.only(
-                          top: 50,
-                          left: 90,
-                          right: 90,
-                          bottom: 50,
-                        )),
+                        Padding(padding: EdgeInsets.all(20)),
                         Container(
                           decoration: BoxDecoration(
                             color: const Color(0xFF5271FF),
