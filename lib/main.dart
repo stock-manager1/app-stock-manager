@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Stock Manager',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'Poppins',
       ),
       home: const LoginPage(),
     );

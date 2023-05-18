@@ -54,6 +54,14 @@ dev_dependencies:
 flutter:
   assets:
     - assets/Stock_Manager_logo.png
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Medium.ttf
+        - asset: fonts/Poppins-SemiBold.ttf
+          weight: 700
+    
+
 
 
   # The following line ensures that the Material Icons font is

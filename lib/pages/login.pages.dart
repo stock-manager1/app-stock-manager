@@ -3,15 +3,15 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          color: Color(0xFF00141b),
-          padding: EdgeInsets.only(
+          color: const Color(0xFF00141b),
+          padding: const EdgeInsets.only(
             top: 90,
             left: 20,
             right: 20,
@@ -19,10 +19,8 @@ class LoginPage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
-              // ignore: sized_box_for_whitespace
               Container(
-                //color: Colors.black,
-                height: 1000,
+                height: 780,
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -45,12 +43,10 @@ class LoginPage extends StatelessWidget {
                     Column(
                       children: [
                         TextFormField(
-                          autofocus: true,
-                          cursorColor: Colors.white,
+                          autofocus: false,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                             hintText: "Email",
-                            fillColor: Colors.white,
                             hintStyle: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w400,
@@ -64,7 +60,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 40,
                         ),
                         TextFormField(
                           autofocus: true,
@@ -93,35 +89,44 @@ class LoginPage extends StatelessWidget {
                                 // Adicione aqui a lógica de login
                               },
                               child: Text(
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                  ),
-                                  'Problemas de Acesso?'),
+                                'Problemas de Acesso?',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                             Padding(
-                                padding: EdgeInsets.only(
-                                    top: 20, left: 0, right: 20, bottom: 60)),
+                              padding: EdgeInsets.only(
+                                top: 20,
+                                left: 0,
+                                right: 20,
+                                bottom: 60,
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(
                           height: 50,
                         ),
                         Padding(padding: EdgeInsets.all(20)),
-                        // ignore: sized_box_for_whitespace
-                        Container(
+                        SizedBox(
                           height: 179,
                           width: 179,
                           child: Image.asset(
                             "assets/Stock_Manager_logo.png",
                           ),
                         ),
-                        SizedBox(
-                          height: 100,
-                        ),
+                        Padding(
+                            padding: EdgeInsets.only(
+                          top: 50,
+                          left: 90,
+                          right: 90,
+                          bottom: 50,
+                        )),
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF5271FF),
+                            color: const Color(0xFF5271FF),
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                           ),
                           child: TextButton(
@@ -140,7 +145,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
