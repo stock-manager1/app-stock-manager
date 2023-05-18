@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,137 +8,141 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Color(0xFF00141b),
-        padding: EdgeInsets.only(
-          top: 90,
-          left: 20,
-          right: 20,
-          bottom: 40,
-        ),
-        child: Column(
-          children: <Widget>[
-            Container(
-              //color: Colors.black,
-              height: 750,
-              child: ListView(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
-                        "Login",
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 40,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 1, bottom: 60),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      TextFormField(
-                        autofocus: true,
-                        cursorColor: Colors.white,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          hintText: "Email",
-                          fillColor: Colors.white,
-                          hintStyle: TextStyle(
+      body: SingleChildScrollView(
+        child: Container(
+          color: Color(0xFF00141b),
+          padding: EdgeInsets.only(
+            top: 90,
+            left: 20,
+            right: 20,
+            bottom: 40,
+          ),
+          child: Column(
+            children: <Widget>[
+              // ignore: sized_box_for_whitespace
+              Container(
+                //color: Colors.black,
+                height: 1000,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const <Widget>[
+                        Text(
+                          "Login",
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 40,
                             color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      TextFormField(
-                        autofocus: true,
-                        keyboardType: TextInputType.text,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: "Senha",
-                          fillColor: Colors.white,
-                          hintStyle: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
+                      ],
+                    ),
+                    SizedBox(
+                      height: 100,
+                    ),
+                    Column(
+                      children: [
+                        TextFormField(
+                          autofocus: true,
+                          cursorColor: Colors.white,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: "Email",
+                            fillColor: Colors.white,
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                            ),
+                          ),
+                          style: TextStyle(
                             fontSize: 16,
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
                           ),
                         ),
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
+                        SizedBox(
+                          height: 15,
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: () {
-                              // Adicione aqui a lógica de login
-                            },
-                            child: Text(
+                        TextFormField(
+                          autofocus: true,
+                          keyboardType: TextInputType.text,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "Senha",
+                            fillColor: Colors.white,
+                            hintStyle: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                            ),
+                          ),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: 'Poppins',
+                            color: Colors.white,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                // Adicione aqui a lógica de login
+                              },
+                              child: Text(
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                  'Problemas de Acesso?'),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    top: 20, left: 0, right: 20, bottom: 60)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        Padding(padding: EdgeInsets.all(20)),
+                        // ignore: sized_box_for_whitespace
+                        Container(
+                          height: 179,
+                          width: 179,
+                          child: Image.asset(
+                            "assets/Stock_Manager_logo.png",
+                          ),
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color(0xFF5271FF),
+                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                          ),
+                          child: TextButton(
+                            onPressed: () {},
+                            child: Center(
+                              child: Text(
+                                'Entrar',
                                 style: TextStyle(
-                                  fontSize: 16,
                                   color: Colors.white,
                                 ),
-                                'Problemas de Acesso?'),
-                          ),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: 20, left: 0, right: 20, bottom: 60)),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 50,
-                      ),
-                      Padding(padding: EdgeInsets.all(20)),
-                      Container(
-                        height: 179,
-                        width: 179,
-                        child: Image.asset(
-                          "assets/Stock_Manager_logo.png",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 100,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFF5271FF),
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                        ),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Center(
-                            child: Text(
-                              'Entrar',
-                              style: TextStyle(
-                                color: Colors.white,
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
+                      ],
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
