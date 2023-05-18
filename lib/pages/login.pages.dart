@@ -19,6 +19,7 @@ class LoginPage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
+              // ignore: sized_box_for_whitespace
               Container(
                 height: 780,
                 child: Column(
