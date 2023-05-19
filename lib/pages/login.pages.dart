@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/opcoes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -138,7 +139,9 @@ class LoginPage extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                           ),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              
+                            },
                             child: Center(
                               child: Text(
                                 'Entrar',

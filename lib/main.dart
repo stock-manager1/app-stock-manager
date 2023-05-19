@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
+import 'package:flutter_application_1/pages/opcoes.dart';
 
 void main() => runApp(const MyApp());
 
