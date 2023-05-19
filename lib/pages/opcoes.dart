@@ -9,11 +9,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // ...
-    routes: {
-      '/login.pages.dart': (context) =>LoginPage(),
-    },
-  // ...
+      title: 'Cards Laranjas',
+      debugShowCheckedModeBanner: false,
+      home: Opcoes(),
+    );
+  }
+}
+
+class Opcoes extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      // .....
       title: 'Cards',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -33,9 +40,8 @@ class MyApp extends StatelessWidget {
                       icon: Icon(Icons.arrow_back),
                       color: Colors.white,
                       onPressed: () {
-                        Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginPage()),
                       );
                       },
                     ),
@@ -102,7 +108,7 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            '- assets/images/card2.png',
+                            'assets/images/card2.png',
                             width: 110.0,
                             height: 110.0,
                           ),
@@ -136,7 +142,7 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            '- assets/images/card3.png',
+                            'assets/images/card3.png',
                             width: 105.0,
                             height: 105.0,
                           ),
@@ -165,7 +171,7 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            '- assets/images/card4.png',
+                            'assets/images/card4.png',
                             width: 110.0,
                             height: 110.0,
                           ),
@@ -199,7 +205,7 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            '- assets/images/card5.png',
+                            'assets/images/card5.png',
                             width: 110.0,
                             height: 110.0,
                           ),
@@ -228,7 +234,7 @@ class MyApp extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
-                            '- assets/images/card5.png',
+                            'assets/images/card6.png',
                             width: 110.0,
                             height: 110.0,
                           ),
