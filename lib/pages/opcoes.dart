@@ -40,9 +40,9 @@ class Opcoes extends StatelessWidget {
                       icon: Icon(Icons.arrow_back),
                       color: Colors.white,
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginPage()),
-                      );
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
                       },
                     ),
                     Spacer(),
@@ -66,34 +66,32 @@ class Opcoes extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-
                   Expanded(
-                    
-                      child: Card(
-                        color: Color(0xffFF914D),
-                        elevation: 15.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/card1.png',
-                              width: 110.0,
-                              height: 110.0,
+                    child: Card(
+                      color: Color(0xffFF914D),
+                      elevation: 15.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/card1.png',
+                            width: 110.0,
+                            height: 110.0,
+                          ),
+                          SizedBox(height: 25.0),
+                          Text(
+                            'Consulta',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
                             ),
-                            SizedBox(height: 25.0),
-                            Text(
-                              'Consulta',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(width: 25.0),
