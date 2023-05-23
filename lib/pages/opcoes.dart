@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
+import 'package:flutter_application_1/pages/transferencia.pages.dart';
 
 void main() {
   runApp(MyApp());
@@ -166,30 +167,39 @@ class Opcoes extends StatelessWidget {
                   ),
                   SizedBox(width: 25.0),
                   Expanded(
-                    child: Card(
-                      color: Color(0xffFF914D),
-                      elevation: 15.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/card4.png',
-                            width: 110.0,
-                            height: 110.0,
-                          ),
-                          SizedBox(height: 25.0),
-                          Text(
-                            'Transferência',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const TransferenciaPage()),
+                        );
+                      },
+                      child: Card(
+                        color: const Color(0xffFF914D),
+                        elevation: 15.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/card4.png',
+                              width: 110.0,
+                              height: 110.0,
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 25.0),
+                            Text(
+                              'Transferência',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -229,30 +239,35 @@ class Opcoes extends StatelessWidget {
                   ),
                   SizedBox(width: 25.0),
                   Expanded(
-                    child: Card(
-                      color: Color(0xffFF914D),
-                      elevation: 15.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/card6.png',
-                            width: 110.0,
-                            height: 110.0,
-                          ),
-                          SizedBox(height: 25.0),
-                          Text(
-                            'Sair',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
+                    child: InkWell(
+                      onTap: () {
+                        showExitConfirmationDialog(context);
+                      },
+                      child: Card(
+                        color: Color(0xffFF914D),
+                        elevation: 15.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/card6.png',
+                              width: 110.0,
+                              height: 110.0,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 25.0),
+                            Text(
+                              'Sair',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -265,3 +280,30 @@ class Opcoes extends StatelessWidget {
     );
   }
 }
+
+void showExitConfirmationDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirmação'),
+          content: Text('Deseja Encerrar a sessão?'),
+          actions: [
+            TextButton(
+              child: Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Sair'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
