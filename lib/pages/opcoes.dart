@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
+import 'package:flutter_application_1/pages/transferencia.pages.dart';
 
 
 void main() {
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Stock Manager',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xff00141B),
-        scaffoldBackgroundColor: Color(0xff00141B),
+        primaryColor: Color(0xFF00141b),
+        scaffoldBackgroundColor: Color(0xFF00141b),
         appBarTheme: AppBarTheme(
-          color: Color(0xff00141B),
+          color: Color(0xFF00141b),
         ),
       ),
       home: Opcoes(),
@@ -87,6 +88,9 @@ class Opcoes extends StatelessWidget {
               image: AssetImage('assets/images/card4.png'),
               text: 'Transferência',
               onPressed: () {
+                Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => TransferenciaPage()),
+                );
                 // Ação ao pressionar o botão 4
               },
             ),
