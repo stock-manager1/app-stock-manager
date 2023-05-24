@@ -129,7 +129,7 @@ class LoginPage extends StatelessWidget {
                           height: 179,
                           width: 179,
                           child: Image.asset(
-                            "assets/Stock_Manager_logo.png",
+                            "assets/images/Stock_Manager_logo.png",
                           ),
                         ),
                         Padding(padding: EdgeInsets.all(20)),
@@ -141,7 +141,7 @@ class LoginPage extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Opcoes()));
+                                  builder: (context) => Opcoes()));
                             },
                             child: Center(
                               child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/widgets.pages.dart';
 
 class TransferenciaPage extends StatelessWidget {
   const TransferenciaPage({Key? key}) : super(key: key);
@@ -9,7 +10,16 @@ class TransferenciaPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF00141b),
         title: const Text("Transferência"),
-        actions: const [Icon(Icons.favorite)],
+        actions: <Widget>[
+          SizedBox(
+            width: 70,
+            height: 70,
+            child: IconButton(
+              icon: Image.asset('assets/images/Stock_Manager_logo.png'),
+              onPressed: () {},
+            ),
+          ),
+        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -22,51 +32,57 @@ class TransferenciaPage extends StatelessWidget {
               height: 60,
             ),
             search(),
+            Container(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Card(
+                        color: const Color(0xffFF914D),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text("CIMENTO"),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Card(
+                        color: const Color(0xffFF914D),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text("Tinta"),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 20),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Card(
+                        color: const Color(0xffFF914D),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Text("Torques"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-}
-
-Widget search() {
-  return Container(
-    height: 60,
-    decoration: const BoxDecoration(
-      color: Color(0xFF5271FF),
-      borderRadius: BorderRadius.all(
-        Radius.circular(128),
-      ),
-    ),
-    child: Row(
-      children: <Widget>[
-        const Icon(Icons.search),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.only(left: 10),
-            child: TextFormField(
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                hintText: "Nome do Produto",
-                hintStyle: TextStyle(
-                  color: Colors.black45,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          width: 10,
-          child: Image.asset(
-            "assets/images/Vector.png",
-            width: 40,
-            height: 40,
-          ),
-        ),
-      ],
-    ),
-  );
 }

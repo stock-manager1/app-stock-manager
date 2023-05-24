@@ -39,7 +39,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -53,13 +53,14 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/Stock_Manager_logo.png
+    - assets/images/Stock_Manager_logo.png
     - assets/images/card1.png
     - assets/images/card2.png
     - assets/images/card3.png
     - assets/images/card4.png
     - assets/images/card5.png
     - assets/images/card6.png
+    
 
     
            

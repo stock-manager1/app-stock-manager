@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
+import 'package:flutter_application_1/pages/recebimento.pages.dart';
 import 'package:flutter_application_1/pages/transferencia.pages.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Stock Manager',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF00141b),
-        scaffoldBackgroundColor: Color(0xFF00141b),
-        appBarTheme: AppBarTheme(
+        primaryColor: const Color(0xFF00141b),
+        scaffoldBackgroundColor: const Color(0xFF00141b),
+        appBarTheme: const AppBarTheme(
           color: Color(0xFF00141b),
         ),
       ),
-      home: Opcoes(),
+      home: const Opcoes(),
     );
   }
 }
 
 class Opcoes extends StatelessWidget {
+  const Opcoes({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,43 +45,44 @@ class Opcoes extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(2.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Row(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     IconButton(
-                      icon: Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back),
                       color: Colors.white,
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
                         );
                       },
                     ),
-                    Spacer(),
-                    Text(
+                    const Spacer(),
+                    const Text(
                       'Stock Manager',
                       style: TextStyle(
                         fontSize: 24.0,
                         color: Colors.white,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Image.asset(
-                      'assets/Stock_Manager_logo.png',
+                      'assets/images/Stock_Manager_logo.png',
                       width: 80.0,
                       height: 80.0,
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Expanded(
                     child: Card(
-                      color: Color(0xffFF914D),
+                      color: const Color(0xffFF914D),
                       elevation: 15.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
@@ -89,8 +95,8 @@ class Opcoes extends StatelessWidget {
                             width: 110.0,
                             height: 110.0,
                           ),
-                          SizedBox(height: 25.0),
-                          Text(
+                          const SizedBox(height: 25.0),
+                          const Text(
                             'Consulta',
                             style: TextStyle(
                               fontSize: 16.0,
@@ -102,10 +108,10 @@ class Opcoes extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 25.0),
+                  const SizedBox(width: 25.0),
                   Expanded(
                     child: Card(
-                      color: Color(0xffFF914D),
+                      color: const Color(0xffFF914D),
                       elevation: 15.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
@@ -118,8 +124,8 @@ class Opcoes extends StatelessWidget {
                             width: 110.0,
                             height: 110.0,
                           ),
-                          SizedBox(height: 25.0),
-                          Text(
+                          const SizedBox(height: 25.0),
+                          const Text(
                             'Cadastro',
                             style: TextStyle(
                               fontSize: 16.0,
@@ -133,39 +139,48 @@ class Opcoes extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Expanded(
-                    child: Card(
-                      color: Color(0xffFF914D),
-                      elevation: 15.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/card3.png',
-                            width: 105.0,
-                            height: 105.0,
-                          ),
-                          SizedBox(height: 10.0),
-                          Text(
-                            'Recebimento de Produto',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const RecebimentoPage()),
+                        );
+                      },
+                      child: Card(
+                        color: const Color(0xffFF914D),
+                        elevation: 15.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/card3.png',
+                              width: 105.0,
+                              height: 105.0,
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 10.0),
+                            const Text(
+                              'Recebimento de Produto',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 25.0),
+                  const SizedBox(width: 25.0),
                   Expanded(
                     child: InkWell(
                       onTap: () {
@@ -189,8 +204,8 @@ class Opcoes extends StatelessWidget {
                               width: 110.0,
                               height: 110.0,
                             ),
-                            SizedBox(height: 25.0),
-                            Text(
+                            const SizedBox(height: 25.0),
+                            const Text(
                               'Transferência',
                               style: TextStyle(
                                 fontSize: 16.0,
@@ -205,13 +220,13 @@ class Opcoes extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Expanded(
                     child: Card(
-                      color: Color(0xffFF914D),
+                      color: const Color(0xffFF914D),
                       elevation: 15.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
@@ -224,8 +239,8 @@ class Opcoes extends StatelessWidget {
                             width: 110.0,
                             height: 110.0,
                           ),
-                          SizedBox(height: 25.0),
-                          Text(
+                          const SizedBox(height: 25.0),
+                          const Text(
                             'Configuração',
                             style: TextStyle(
                               fontSize: 16.0,
@@ -237,14 +252,14 @@ class Opcoes extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 25.0),
+                  const SizedBox(width: 25.0),
                   Expanded(
                     child: InkWell(
                       onTap: () {
                         showExitConfirmationDialog(context);
                       },
                       child: Card(
-                        color: Color(0xffFF914D),
+                        color: const Color(0xffFF914D),
                         elevation: 15.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
@@ -258,7 +273,7 @@ class Opcoes extends StatelessWidget {
                               height: 110.0,
                             ),
                             const SizedBox(height: 25.0),
-                            Text(
+                            const Text(
                               'Sair',
                               style: TextStyle(
                                 fontSize: 16.0,
@@ -285,21 +300,21 @@ void showExitConfirmationDialog(BuildContext context) => showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirmação'),
-          content: Text('Deseja Encerrar a sessão?'),
+          title: const Text('Confirmação'),
+          content: const Text('Deseja Encerrar a sessão?'),
           actions: [
             TextButton(
-              child: Text('Cancelar'),
+              child: const Text('Cancelar'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Sair'),
+              child: const Text('Sair'),
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                 );
               },
             ),
