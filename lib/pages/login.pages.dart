@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes.dart';
+import 'package:flutter_application_1/pages/opcoes_pages.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -141,7 +142,7 @@ class LoginPage extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Opcoes()));
+                                  builder: (context) => Teste1()));
                             },
                             child: Center(
                               child: Text(
