@@ -59,7 +59,7 @@ class OpcaoPage extends StatelessWidget {
           child: GridView.count(
             crossAxisCount: 2, // Dois itens por linha
             padding: EdgeInsets.all(20.0),
-            mainAxisSpacing: 60.0, // Espaçamento vertical entre os itens
+            mainAxisSpacing: 50.0, // Espaçamento vertical entre os itens
             crossAxisSpacing: 30.0, // Espaçamento horizontal entre os itens
             children: [
               ButtonWithImage(
