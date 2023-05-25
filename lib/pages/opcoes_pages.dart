@@ -103,38 +103,13 @@ class OpcaoPage extends StatelessWidget {
                   // Ação ao pressionar o botão 5
                 },
               ),
-              Expanded(child: InkWell(
-                      onTap: () {
-                        showExitConfirmationDialog(context);
-                      },
-                        child: Card(
-                        color: const Color(0xffFF914D),
-                        elevation: 7.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              'assets/images/card6.png',
-                              width: 100.0,
-                              height: 110.0,
-                            ),
-                            const SizedBox(height: 4.0),
-                            const Text(
-                              'Sair',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      )
-              ) 
+              ButtonWithImage(
+                image: AssetImage('assets/images/card6.png'),
+                text: 'Sair',
+                onPressed: () {
+                  showExitConfirmationDialog(context);
+                },
+              ),
             ],
           ),
         ),
@@ -191,28 +166,29 @@ class ButtonWithImage extends StatelessWidget {
 }
 
 void showExitConfirmationDialog(BuildContext context) => showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirmação'),
-          content: const Text('Deseja Encerrar a sessão?'),
-          actions: [
-            TextButton(
-              child: const Text('Cancelar'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text('Sair'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
-              },
-            ),
-          ],
-        );
-      },
+  context: context,
+  builder: (BuildContext context) {
+    return AlertDialog(
+      title: const Text('Confirmação'),
+      content: const Text('Deseja encerrar a sessão?'),
+      actions: [
+        TextButton(
+          child: const Text('Cancelar'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        TextButton(
+          child: const Text('Sair'),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+              (Route<dynamic> route) => false, // Remove todas as rotas anteriores
+            );
+          },
+        ),
+      ],
     );
+  },
+);
