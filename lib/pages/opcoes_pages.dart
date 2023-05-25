@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: Teste1(),
+      home: OpcaoPage(),
     );
   }
 }
 
-class Teste1 extends StatelessWidget {
+class OpcaoPage extends StatelessWidget {
   final double appBarTopMargin = 0.0; // Margem superior do AppBar
   final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
 
