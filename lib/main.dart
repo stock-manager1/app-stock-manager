@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
 // ignore: unused_import
-import 'package:flutter_application_1/pages/opcoes.dart';
+import 'package:flutter_application_1/pages/opcoes_pages.dart';
 
 void main() => runApp(const MyApp());
 

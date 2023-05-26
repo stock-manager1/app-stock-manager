@@ -83,7 +83,7 @@ class OpcaoPage extends StatelessWidget {
                 text: 'Recebimento de Produto',
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => TransferenciaPage()));
+                      MaterialPageRoute(builder: (context) => RecebimentoPage()));
                   // Ação ao pressionar o botão 3
                 },
               ),
@@ -92,7 +92,7 @@ class OpcaoPage extends StatelessWidget {
                 text: 'Transferência',
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => RecebimentoPage()));
+                      MaterialPageRoute(builder: (context) => TransferenciaPage()));
                   // Ação ao pressionar o botão 4
                 },
               ),

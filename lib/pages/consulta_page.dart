@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/opcoes.dart';
+import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets.pages.dart';
 
 class Consulta extends StatelessWidget {
