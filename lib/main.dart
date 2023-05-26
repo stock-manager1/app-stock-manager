@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.pages.dart';
 // ignore: unused_import
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

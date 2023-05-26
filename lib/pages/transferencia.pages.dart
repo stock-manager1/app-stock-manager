@@ -32,52 +32,79 @@ class TransferenciaPage extends StatelessWidget {
               height: 60,
             ),
             search(),
-            Container(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                    ),
-                    SizedBox(
-                      height: 150,
-                      child: Card(
-                        color: const Color(0xffFF914D),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Text("CIMENTO"),
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                  ),
+                  SizedBox(
+                    height: 150,
+                    child: Card(
+                      color: const Color(0xffFF914D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Row(
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(left: 20),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "CIMENTO",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "CIMENTO",
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                          ),
+                        ],
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                    ),
-                    SizedBox(
-                      height: 150,
-                      child: Card(
-                        color: const Color(0xffFF914D),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Text("Tinta"),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                  ),
+                  SizedBox(
+                    height: 150,
+                    child: Card(
+                      color: const Color(0xffFF914D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
+                      child: const Text("Tinta"),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 20),
-                    ),
-                    SizedBox(
-                      height: 150,
-                      child: Card(
-                        color: const Color(0xffFF914D),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Text("Torques"),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 20),
+                  ),
+                  SizedBox(
+                    height: 150,
+                    child: Card(
+                      color: const Color(0xffFF914D),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
+                      child: const Text("Torques"),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

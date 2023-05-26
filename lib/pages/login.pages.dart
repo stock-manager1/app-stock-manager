@@ -1,7 +1,12 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dto/login_request.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  final String? _host = dotenv.env['HOSTNAME'];
   @override
   void dispose() {
     _emailController.dispose();
@@ -24,8 +30,6 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      // Realize a lógica de autenticação aqui
-      // Se o login for bem-sucedido, navegue para a tela de opções
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => OpcaoPage()),
       );
@@ -181,7 +185,11 @@ class _LoginPageState extends State<LoginPage> {
                                   BorderRadius.all(Radius.circular(15)),
                             ),
                             child: TextButton(
-                              onPressed: _login,
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  logar();
+                                }
+                              },
                               child: const Center(
                                 child: Text(
                                   'Entrar',
@@ -203,5 +211,21 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void logar() async {
+    var url = Uri.parse('$_host/user/login');
+    print(url);
+    LoginRequest loginRequest = LoginRequest.fromJson('''{ 
+      "email": "aline@gmail.com",
+      "password": "123"
+    }''');
+    print(loginRequest.toJson());
+    var response = await http.post(
+      url,
+      body: loginRequest.toJson(),
+    );
+    print(response.statusCode);
+    print(response.body);
   }
 }
