@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets.pages.dart';
@@ -7,16 +9,16 @@ class Consulta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    theme: ThemeData(
-        fontFamily: 'Poppins',
-      );
+    ThemeData(
+      fontFamily: 'Poppins',
+    );
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            Size.fromHeight(40.0), // Define a altura desejada do AppBar
+            const Size.fromHeight(40.0), // Define a altura desejada do AppBar
         child: AppBar(
-          backgroundColor: Color(0xFF00141b),
-          title: Text(
+          backgroundColor: const Color(0xFF00141b),
+          title: const Text(
             'Consulta',
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -45,10 +47,10 @@ class Consulta extends StatelessWidget {
               ),
               search(),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: const [
                     ButtonWithText(),
                     SizedBox(height: 20),
                     ButtonWithText(),
@@ -66,6 +68,8 @@ class Consulta extends StatelessWidget {
 }
 
 class ButtonWithText extends StatelessWidget {
+  const ButtonWithText({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -77,13 +81,13 @@ class ButtonWithText extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                children: const [
                   Expanded(
                     child: Text(
                       'Texto 1',
@@ -100,10 +104,10 @@ class ButtonWithText extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                children: const [
                   Expanded(
                     child: Text(
                       'Texto 3',
@@ -129,7 +133,7 @@ class ButtonWithText extends StatelessWidget {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Consulta(),
   ));
 }
