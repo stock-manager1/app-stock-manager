@@ -187,7 +187,8 @@ class _LoginPageState extends State<LoginPage> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  logar();
+                                  //logar();
+                                  _login();
                                 }
                               },
                               child: const Center(
@@ -213,7 +214,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void logar() async {
+  /*void logar() async {
     var url = Uri.parse('$_host/user/login');
     print(url);
     LoginRequest loginRequest = LoginRequest.fromJson('''{ 
@@ -227,5 +228,5 @@ class _LoginPageState extends State<LoginPage> {
     );
     print(response.statusCode);
     print(response.body);
-  }
+  }*/
 }
