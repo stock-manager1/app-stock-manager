@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/login.pages.dart';
-import 'package:flutter_application_1/pages/recebimento.pages.dart';
-import 'package:flutter_application_1/pages/transferencia.pages.dart';
-import 'package:flutter_application_1/pages/widgets.pages.dart';
+import 'package:flutter_application_1/pages/configuracoes_pages.dart';
+import 'package:flutter_application_1/pages/login_pages.dart';
+import 'package:flutter_application_1/pages/recebimento_pages.dart';
+import 'package:flutter_application_1/pages/transferencia_pages.dart';
+import 'package:flutter_application_1/pages/widgets_pages.dart';
 import 'package:flutter_application_1/pages/consulta_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,6 @@ class OpcaoPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-        
             Size.fromHeight(80.0 + appBarTopMargin + appBarBottomMargin),
         child: Container(
           margin:
@@ -82,8 +82,8 @@ class OpcaoPage extends StatelessWidget {
                 image: AssetImage('assets/images/card3.png'),
                 text: 'Recebimento de Produto',
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => RecebimentoPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => RecebimentoPage()));
                   // Ação ao pressionar o botão 3
                 },
               ),
@@ -91,8 +91,8 @@ class OpcaoPage extends StatelessWidget {
                 image: AssetImage('assets/images/card4.png'),
                 text: 'Transferência',
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => TransferenciaPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TransferenciaPage()));
                   // Ação ao pressionar o botão 4
                 },
               ),
@@ -100,7 +100,8 @@ class OpcaoPage extends StatelessWidget {
                 image: AssetImage('assets/images/card5.png'),
                 text: 'Configuração',
                 onPressed: () {
-                  // Ação ao pressionar o botão 5
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ConfigPage()));
                 },
               ),
               ButtonWithImage(
@@ -166,29 +167,30 @@ class ButtonWithImage extends StatelessWidget {
 }
 
 void showExitConfirmationDialog(BuildContext context) => showDialog(
-  context: context,
-  builder: (BuildContext context) {
-    return AlertDialog(
-      title: const Text('Confirmação'),
-      content: const Text('Deseja encerrar a sessão?'),
-      actions: [
-        TextButton(
-          child: const Text('Cancelar'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        TextButton(
-          child: const Text('Sair'),
-          onPressed: () {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => LoginPage()),
-              (Route<dynamic> route) => false, // Remove todas as rotas anteriores
-            );
-          },
-        ),
-      ],
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirmação'),
+          content: const Text('Deseja encerrar a sessão?'),
+          actions: [
+            TextButton(
+              child: const Text('Cancelar'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Sair'),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  (Route<dynamic> route) =>
+                      false, // Remove todas as rotas anteriores
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
-  },
-);

@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                             obscureText: true,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Você precisa digit uma senha válida';
+                                return 'Você precisa digitar uma senha válida';
                               }
                               return null;
                             },
