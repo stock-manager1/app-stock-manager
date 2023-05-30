@@ -5,8 +5,9 @@ import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+  await dotenv.load();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

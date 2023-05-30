@@ -1,12 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
-
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/dto/login_request.dart';
-import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+
+import 'package:flutter_application_1/dto/login_request.dart';
+import 'package:flutter_application_1/pages/opcoes_pages.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   final String? _host = dotenv.env['HOSTNAME'];
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -187,7 +187,8 @@ class _LoginPageState extends State<LoginPage> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  //logar();
+                                  //_logar();
+                                  _logar();
                                   _login();
                                 }
                               },
@@ -214,19 +215,42 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /*void logar() async {
+  /* _logar() async {
     var url = Uri.parse('$_host/user/login');
-    print(url);
-    LoginRequest loginRequest = LoginRequest.fromJson('''{ 
-      "email": "aline@gmail.com",
-      "password": "123"
-    }''');
-    print(loginRequest.toJson());
-    var response = await http.post(
-      url,
-      body: loginRequest.toJson(),
-    );
+    var response = await http.post(url, body: {
+      'username': _emailController.text,
+      'password': _passwordController.text,
+    });
+
     print(response.statusCode);
     print(response.body);
+    print('logado com sucesso');
   }*/
+
+  void _logar() async {
+    var url = Uri.parse('$_host/user/login');
+
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    LoginRequest loginRequest = LoginRequest(email: email, password: password);
+    print(loginRequest.toJson());
+
+    http
+        .post(
+      url,
+      body: loginRequest.toJson(),
+    )
+        .then((value) {
+      print(value.statusCode);
+      print(value.body);
+    });
+
+    /*if (response.statusCode == 200) {
+      print(response.statusCode);
+      print(response.body);
+    } else {
+      print(response.statusCode);
+    }*/
+  }
 }

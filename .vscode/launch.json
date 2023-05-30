@@ -1,28 +1,25 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    
-        
-
         {
             "name": "app-stock-manager",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "console": "externalTerminal"
         },
         {
             "name": "app-stock-manager (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "console": "externalTerminal"
         },
         {
             "name": "app-stock-manager (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "console": "externalTerminal"
         }
     ]
 }
