@@ -189,7 +189,6 @@ class _LoginPageState extends State<LoginPage> {
                                 if (_formKey.currentState!.validate()) {
                                   //_logar();
                                   _logar();
-                                  _login();
                                 }
                               },
                               child: const Center(
@@ -228,7 +227,7 @@ class _LoginPageState extends State<LoginPage> {
   }*/
 
   void _logar() async {
-    var url = Uri.parse('$_host/user/login');
+    var url = Uri.parse('http://localhost:3000/user/login');
 
     String email = _emailController.text;
     String password = _passwordController.text;
