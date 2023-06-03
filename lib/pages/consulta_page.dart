@@ -4,6 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Stock Manager',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
+    );
+  }
+}
+
 class Consulta extends StatelessWidget {
   const Consulta({Key? key}) : super(key: key);
 
@@ -28,7 +41,7 @@ class Consulta extends StatelessWidget {
           centerTitle: true,
           actions: [
             Image.asset(
-              'assets/images/Stock_Manager_logo.png',
+              'assets/loogo.png',
               width: 80.0,
               height: 80.0,
             ),
@@ -43,7 +56,7 @@ class Consulta extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               const SizedBox(
-                height: 60,
+                height: 30,
               ),
               search(),
               Container(
@@ -53,10 +66,19 @@ class Consulta extends StatelessWidget {
                   children: const [
                     ButtonWithText(),
                     SizedBox(height: 20),
-                    ButtonWithText(),
+                    ButtonWithText1(),
                     SizedBox(height: 20),
-                    ButtonWithText(),
+                    ButtonWithText2(),
                   ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/loogo.png',
+                  width: 80.0,
+                  height: 80.0,
                 ),
               ),
             ],
@@ -72,13 +94,16 @@ class ButtonWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: double.infinity,
-      child: Card(
-        color: Colors.orange,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+    return GestureDetector(
+      onTap: () {
+        print('Botão 1 pressionado!');
+      },
+      child: Container(
+        width: 320, // Tamanho do card
+        height: 150, // Tamanho do card
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), // Borda redonda
+          color: Color(0xffFF914D), // Cor de fundo do card
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -90,16 +115,16 @@ class ButtonWithText extends StatelessWidget {
                 children: const [
                   Expanded(
                     child: Text(
-                      'Texto 1',
+                      'Cimento Royal',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      'Texto 2',
+                      "RS 35,00",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                   ),
                 ],
@@ -110,16 +135,152 @@ class ButtonWithText extends StatelessWidget {
                 children: const [
                   Expanded(
                     child: Text(
-                      'Texto 3',
+                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      'Texto 4',
+                      'Qtde: 8',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white),
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonWithText1 extends StatelessWidget {
+  const ButtonWithText1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('Botão 1 pressionado!');
+      },
+      child: Container(
+        width: 320, // Tamanho do card
+        height: 150, // Tamanho do card
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), // Borda redonda
+          color: Color(0xffFF914D), // Cor de fundo do card
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Expanded(
+                    child: Text(
+                      'Telha Brasilit',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      "RS 90,00",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Expanded(
+                    child: Text(
+                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Qtde: 5',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonWithText2 extends StatelessWidget {
+  const ButtonWithText2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('Botão 1 pressionado!');
+      },
+      child: Container(
+        width: 320, // Tamanho do card
+        height: 150, // Tamanho do card
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), // Borda redonda
+          color: Color(0xffFF914D), // Cor de fundo do card
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Expanded(
+                    child: Text(
+                      'Escada',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      "RS 130,00",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Expanded(
+                    child: Text(
+                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 14, color: Colors.white),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Qtde: 2',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
                     ),
                   ),
                 ],
