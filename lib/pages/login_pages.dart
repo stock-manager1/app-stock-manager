@@ -187,8 +187,9 @@ class _LoginPageState extends State<LoginPage> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  //_logar();
+                                  //logar();
                                   _logar();
+                                  _login();
                                 }
                               },
                               child: const Center(
@@ -214,8 +215,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /* _logar() async {
-    var url = Uri.parse('$_host/user/login');
+  /*logar() async {
+    var url = Uri.parse('http://localhost:8000/user/login');
     var response = await http.post(url, body: {
       'username': _emailController.text,
       'password': _passwordController.text,
@@ -227,7 +228,7 @@ class _LoginPageState extends State<LoginPage> {
   }*/
 
   void _logar() async {
-    var url = Uri.parse('http://localhost:3000/user/login');
+    var url = Uri.parse('http://192.168.1.8:8000/user/login');
 
     String email = _emailController.text;
     String password = _passwordController.text;
@@ -235,7 +236,7 @@ class _LoginPageState extends State<LoginPage> {
     LoginRequest loginRequest = LoginRequest(email: email, password: password);
     print(loginRequest.toJson());
 
-    http
+    /*http
         .post(
       url,
       body: loginRequest.toJson(),
@@ -243,6 +244,24 @@ class _LoginPageState extends State<LoginPage> {
         .then((value) {
       print(value.statusCode);
       print(value.body);
+    });*/
+
+    http
+        .post(
+      url,
+      body: loginRequest.toJson(),
+    )
+        .then((value) {
+      if (value.statusCode == 200) {
+        print('Comunicação com o banco de dados bem-sucedida!');
+        print('Status code: ${value.statusCode}');
+        print('Response body: ${value.body}');
+      } else {
+        print('Falha na comunicação com o banco de dados!');
+        print('Status code: ${value.statusCode}');
+      }
+    }).catchError((error) {
+      print('Erro durante a comunicação com o banco de dados: $error');
     });
 
     /*if (response.statusCode == 200) {
