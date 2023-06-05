@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/configuracoes_pages.dart';
 import 'package:flutter_application_1/pages/login_pages.dart';
@@ -7,6 +9,8 @@ import 'package:flutter_application_1/pages/widgets_pages.dart';
 import 'package:flutter_application_1/pages/consulta_page.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,14 +19,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: OpcaoPage(),
+      home: const OpcaoPage(),
     );
   }
 }
 
 class OpcaoPage extends StatelessWidget {
   final double appBarTopMargin = 0.0; // Margem superior do AppBar
-  final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
+  final double appBarBottomMargin = 0.0;
+
+  const OpcaoPage({super.key}); // Margem inferior do AppBar
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +40,8 @@ class OpcaoPage extends StatelessWidget {
           margin:
               EdgeInsets.only(top: appBarTopMargin, bottom: appBarBottomMargin),
           child: AppBar(
-            backgroundColor: Color(0xFF00141b), // Definindo a cor preta
-            title: Text(
+            backgroundColor: const Color(0xFF00141b), // Definindo a cor preta
+            title: const Text(
               'Stock Manager',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -54,58 +60,58 @@ class OpcaoPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color(0xFF00141b), // Definindo a cor preta
+        color: const Color(0xFF00141b), // Definindo a cor preta
         child: Center(
           child: GridView.count(
             crossAxisCount: 2, // Dois itens por linha
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             mainAxisSpacing: 50.0, // Espaçamento vertical entre os itens
             crossAxisSpacing: 30.0, // Espaçamento horizontal entre os itens
             children: [
               ButtonWithImage(
-                image: AssetImage('assets/images/card1.png'),
+                image: const AssetImage('assets/images/card1.png'),
                 text: 'Consulta',
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => Consulta()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Consulta()));
                   // Ação ao pressionar o botão 1
                 },
               ),
               ButtonWithImage(
-                image: AssetImage('assets/images/card2.png'),
+                image: const AssetImage('assets/images/card2.png'),
                 text: 'Cadastro',
                 onPressed: () {
                   // Ação ao pressionar o botão 2
                 },
               ),
               ButtonWithImage(
-                image: AssetImage('assets/images/card3.png'),
+                image: const AssetImage('assets/images/card3.png'),
                 text: 'Recebimento de Produto',
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => RecebimentoPage()));
+                      builder: (context) => const RecebimentoPage()));
                   // Ação ao pressionar o botão 3
                 },
               ),
               ButtonWithImage(
-                image: AssetImage('assets/images/card4.png'),
+                image: const AssetImage('assets/images/card4.png'),
                 text: 'Transferência',
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TransferenciaPage()));
+                      builder: (context) => const TransferenciaPage()));
                   // Ação ao pressionar o botão 4
                 },
               ),
               ButtonWithImage(
-                image: AssetImage('assets/images/card5.png'),
+                image: const AssetImage('assets/images/card5.png'),
                 text: 'Configuração',
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => ConfigPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ConfigPage()));
                 },
               ),
               ButtonWithImage(
-                image: AssetImage('assets/images/card6.png'),
+                image: const AssetImage('assets/images/card6.png'),
                 text: 'Sair',
                 onPressed: () {
                   showExitConfirmationDialog(context);
@@ -125,6 +131,7 @@ class ButtonWithImage extends StatelessWidget {
   final VoidCallback onPressed;
 
   const ButtonWithImage({
+    super.key,
     required this.image,
     required this.text,
     required this.onPressed,
@@ -132,13 +139,13 @@ class ButtonWithImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 100,
       height: 100,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xffFF914D),
+          backgroundColor: const Color(0xffFF914D),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
@@ -150,10 +157,10 @@ class ButtonWithImage extends StatelessWidget {
               image: image,
               fit: BoxFit.contain,
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
                 fontFamily: 'Poppins',
                 color: Colors.white,
@@ -184,7 +191,7 @@ void showExitConfirmationDialog(BuildContext context) => showDialog(
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                   (Route<dynamic> route) =>
                       false, // Remove todas as rotas anteriores
                 );

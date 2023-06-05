@@ -1,9 +1,11 @@
+// ignore_for_file: unnecessary_import, implementation_imports, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 class ConfigPage extends StatelessWidget {
-  ConfigPage({super.key});
+  const ConfigPage({super.key});
 
   @override
   Widget build(BuildContext context) {

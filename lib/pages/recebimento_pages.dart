@@ -1,3 +1,5 @@
+// ignore_for_file: duplicate_import
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 
@@ -38,13 +40,13 @@ class RecebimentoPage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  children: [
-                    const SizedBox(height: 20),
+                  children: const [
+                    SizedBox(height: 20),
                     CustomCard(
                       numeroPedido: '123456',
                       fornecedor: 'Tigre Materiais',
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                     ProductCard(
                       productName: 'JOELHO SOLD 20MM ',
                       codigo: '001',
@@ -105,24 +107,24 @@ class CustomCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Número do Pedido',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     numeroPedido,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   '|',
                   style: TextStyle(color: Colors.black, fontSize: 50),
@@ -133,17 +135,17 @@ class CustomCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Fornecedor',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     fornecedor,
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
                   ),
                 ],
               ),
@@ -192,31 +194,31 @@ class _ProductCardState extends State<ProductCard> {
                     children: [
                       Text(
                         'Nome Produto: ${widget.productName}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
                         'Código: ${widget.codigo}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
                         'Quantidade: ${widget.quantidade}',
-                        style: TextStyle(fontSize: 16),
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ],
                   ),
@@ -225,7 +227,7 @@ class _ProductCardState extends State<ProductCard> {
             ),
             Column(
               children: [
-                SizedBox(width: 16.0),
+                const SizedBox(width: 16.0),
                 IconButton(
                   onPressed: () {
                     setState(() {
@@ -233,11 +235,11 @@ class _ProductCardState extends State<ProductCard> {
                     });
                   },
                   icon: isChecked
-                      ? Icon(
+                      ? const Icon(
                           Icons.check_circle,
                           color: Colors.green,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.check_box_outline_blank_sharp,
                           color: Colors.red,
                         ),

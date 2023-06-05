@@ -1,4 +1,5 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, avoid_print, use_build_context_synchronously
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -28,14 +29,6 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => OpcaoPage()),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: Column(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: 780,
                 child: Form(
                   key: _formKey,
@@ -187,8 +180,6 @@ class _LoginPageState extends State<LoginPage> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  //logar();
-                                  _logar();
                                   _login();
                                 }
                               },
@@ -215,20 +206,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  /*logar() async {
-    var url = Uri.parse('http://localhost:8000/user/login');
-    var response = await http.post(url, body: {
-      'username': _emailController.text,
-      'password': _passwordController.text,
-    });
-
-    print(response.statusCode);
-    print(response.body);
-    print('logado com sucesso');
-  }*/
-
-  void _logar() async {
-    var url = Uri.parse('http://192.168.1.8:8000/user/login');
+  Future<http.Response> _logar() async {
+    var url = Uri.parse('http://192.168.1.13:8000/user/login');
 
     String email = _emailController.text;
     String password = _passwordController.text;
@@ -236,39 +215,55 @@ class _LoginPageState extends State<LoginPage> {
     LoginRequest loginRequest = LoginRequest(email: email, password: password);
     print(loginRequest.toJson());
 
-    /*http
-        .post(
+    return http.post(
       url,
       body: loginRequest.toJson(),
-    )
-        .then((value) {
-      print(value.statusCode);
-      print(value.body);
-    });*/
+    );
+  }
 
-    http
-        .post(
-      url,
-      body: loginRequest.toJson(),
-    )
-        .then((value) {
-      if (value.statusCode == 200) {
-        print('Comunicação com o banco de dados bem-sucedida!');
-        print('Status code: ${value.statusCode}');
-        print('Response body: ${value.body}');
+  void _login() async {
+    try {
+      final response = await _logar();
+      if (response.statusCode == 200) {
+        // Login bem-sucedido, navegue para a próxima tela
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => OpcaoPage()),
+        );
       } else {
-        print('Falha na comunicação com o banco de dados!');
-        print('Status code: ${value.statusCode}');
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Erro de Login'),
+            content: const Text(
+                'Credenciais inválidas. Verifique seu email e senha.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
       }
-    }).catchError((error) {
-      print('Erro durante a comunicação com o banco de dados: $error');
-    });
-
-    /*if (response.statusCode == 200) {
-      print(response.statusCode);
-      print(response.body);
-    } else {
-      print(response.statusCode);
-    }*/
+    } catch (error) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Erro de Login'),
+          content: const Text(
+              'Ocorreu um erro durante o login. Tente novamente mais tarde.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }

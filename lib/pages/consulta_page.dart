@@ -1,10 +1,12 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -103,7 +105,7 @@ class ButtonWithText extends StatelessWidget {
         height: 150, // Tamanho do card
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: Color(0xffFF914D), // Cor de fundo do card
+          color: const Color(0xffFF914D), // Cor de fundo do card
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -171,7 +173,7 @@ class ButtonWithText1 extends StatelessWidget {
         height: 150, // Tamanho do card
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: Color(0xffFF914D), // Cor de fundo do card
+          color: const Color(0xffFF914D), // Cor de fundo do card
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -239,7 +241,7 @@ class ButtonWithText2 extends StatelessWidget {
         height: 150, // Tamanho do card
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: Color(0xffFF914D), // Cor de fundo do card
+          color: const Color(0xffFF914D), // Cor de fundo do card
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
