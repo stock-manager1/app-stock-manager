@@ -10,207 +10,39 @@ class TransferenciaPage extends StatefulWidget {
 }
 
 class _TransferenciaPageState extends State<TransferenciaPage> {
-  int counter = 0;
-  int counter2 = 0;
-  bool get isEmpty => counter == 0;
-  bool get isFull => counter == 100;
+  List<StockCard> stockCards = [
+    StockCard(title: 'CIMENTO 50 KG', stock: '10'),
+    StockCard(title: 'ESCADA ALUMINIO', stock: '5'),
+    StockCard(title: 'TELHA BRASILIT', stock: '20'),
+    StockCard(title: 'TUBO 100 MM ESG', stock: '100'),
+  ];
 
-  void incrementCounter() {
+  void incrementCounter(StockCard stockCard) {
     setState(() {
-      counter++;
+      stockCard.counter++;
     });
-    print(counter);
+    print(stockCard.counter);
   }
 
-  void decrementCounter() {
+  void decrementCounter(StockCard stockCard) {
     setState(() {
-      counter--;
+      stockCard.counter--;
     });
-    print(counter);
+    print(stockCard.counter);
   }
 
-  void incrementCounter2() {
+  void incrementCounter2(StockCard stockCard) {
     setState(() {
-      counter2++;
+      stockCard.counter2++;
     });
-    print(counter);
+    print(stockCard.counter2);
   }
 
-  void decrementCounter2() {
+  void decrementCounter2(StockCard stockCard) {
     setState(() {
-      counter2--;
+      stockCard.counter2--;
     });
-    print(counter);
-  }
-
-  Widget buildStockCard(String title, String stock) {
-    return SizedBox(
-      height: 150,
-      child: Card(
-        color: const Color(0xffFF914D),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Column(
-          children: [
-            Padding(padding: EdgeInsets.only(left: 20)),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 10, right: 80),
-                    child: Text(
-                      title,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Text(
-                      'Estoque:  $stock',
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 10, right: 38),
-                  child: Text(
-                    'Qtde Loja: ',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                CounterButton(
-                  icon: Icons.remove,
-                  onPressed: isEmpty ? null : decrementCounter,
-                ),
-                SizedBox(
-                  width: 35,
-                  height: 40,
-                  child: Card(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SizedBox(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 1),
-                        child: Text(
-                          '$counter',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                CounterButton(
-                  icon: Icons.add,
-                  onPressed: isFull ? null : incrementCounter,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 20),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    'Qtde Deposito: ',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                CounterButton(
-                  icon: Icons.remove,
-                  onPressed: isEmpty ? null : decrementCounter2,
-                ),
-                SizedBox(
-                  width: 35,
-                  height: 40,
-                  child: Card(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: SizedBox(
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 1),
-                        child: Text(
-                          '$counter2',
-                          style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                CounterButton(
-                  icon: Icons.add,
-                  onPressed: isFull ? null : incrementCounter2,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 20, left: 5),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      child: Card(
-                        color: const Color(0xFF5271FF),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            OpcaoPage();
-                          },
-                          child: Text(
-                            'ATUALIZAR',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+    print(stockCard.counter2);
   }
 
   @override
@@ -234,25 +66,24 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
         padding: const EdgeInsets.all(15),
         color: const Color(0xFF00141b),
         width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const SizedBox(
-              height: 60,
-            ),
-            search(),
-            SingleChildScrollView(
-              child: Column(
+        child: SingleChildScrollView(
+          // Wrap the main Column with SingleChildScrollView
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const SizedBox(
+                height: 60,
+              ),
+              search(),
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Padding(
                     padding: EdgeInsets.only(bottom: 20),
                   ),
-                  buildStockCard('CIMENTO 50 KG ', '10'),
-                  buildStockCard('ESCADA ALUMINIO', '5'),
-                  buildStockCard('TELHA BRASILIT', '20'),
+                  for (var stockCard in stockCards) buildStockCard(stockCard),
                   Padding(
-                    padding: EdgeInsets.all(50),
+                    padding: const EdgeInsets.all(50),
                     child: SizedBox(
                       height: 70,
                       width: 70,
@@ -263,12 +94,152 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
                   ),
                 ],
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildStockCard(StockCard stockCard) {
+    return SizedBox(
+      height: 150,
+      child: Card(
+        color: const Color(0xffFF914D),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Column(
+          children: [
+            const Padding(padding: EdgeInsets.only(left: 20)),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 80),
+                    child: Text(
+                      stockCard.title,
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: Text(
+                      'Estoque:  ${stockCard.stock}',
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 9, right: 30),
+                  child: Text(
+                    'Qtde Loja: ',
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                CounterButton(
+                  icon: Icons.remove,
+                  onPressed: stockCard.isEmpty
+                      ? null
+                      : () => decrementCounter(stockCard),
+                ),
+                SizedBox(
+                  width: 40,
+                  height: 40,
+                  child: CounterCard(
+                    counter: stockCard.counter,
+                  ),
+                ),
+                CounterButton(
+                  icon: Icons.add,
+                  onPressed: stockCard.isFull
+                      ? null
+                      : () => incrementCounter(stockCard),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Qtde Deposito: ',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                CounterButton(
+                  icon: Icons.remove,
+                  onPressed: stockCard.isEmpty
+                      ? null
+                      : () => decrementCounter2(stockCard),
+                ),
+                SizedBox(
+                  width: 35,
+                  height: 40,
+                  child: CounterCard(
+                    counter: stockCard.counter2,
+                  ),
+                ),
+                CounterButton(
+                  icon: Icons.add,
+                  onPressed: stockCard.isFull
+                      ? null
+                      : () => incrementCounter2(stockCard),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 20, left: 5),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const SizedBox(
+                      child: UpdateButton(),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
       ),
     );
   }
+}
+
+class StockCard {
+  String title;
+  String stock;
+  int counter = 0;
+  int counter2 = 0;
+
+  StockCard({required this.title, required this.stock});
+
+  bool get isEmpty => counter == 0;
+  bool get isFull => counter == 100;
 }
 
 class CounterButton extends StatelessWidget {
@@ -286,6 +257,71 @@ class CounterButton extends StatelessWidget {
     return IconButton(
       icon: Icon(icon),
       onPressed: onPressed,
+    );
+  }
+}
+
+class CounterCard extends StatelessWidget {
+  final int counter;
+
+  const CounterCard({Key? key, required this.counter}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Card(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: SizedBox(
+          child: Padding(
+            padding: const EdgeInsets.all(3),
+            child: Text(
+              counter.toString(),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class UpdateButton extends StatelessWidget {
+  const UpdateButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: Card(
+        color: const Color(0xFF5271FF),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: TextButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const OpcaoPage(),
+              ),
+            );
+          },
+          child: const Text(
+            'ATUALIZAR',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/cadastro.dart';
 import 'package:flutter_application_1/pages/configuracoes_pages.dart';
 import 'package:flutter_application_1/pages/login_pages.dart';
 import 'package:flutter_application_1/pages/recebimento_pages.dart';
@@ -81,7 +82,8 @@ class OpcaoPage extends StatelessWidget {
                 image: const AssetImage('assets/images/card2.png'),
                 text: 'Cadastro',
                 onPressed: () {
-                  // Ação ao pressionar o botão 2
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Cadastro()));
                 },
               ),
               ButtonWithImage(
@@ -192,8 +194,7 @@ void showExitConfirmationDialog(BuildContext context) => showDialog(
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginPage()),
-                  (Route<dynamic> route) =>
-                      false, // Remove todas as rotas anteriores
+                  (Route<dynamic> route) => false,
                 );
               },
             ),

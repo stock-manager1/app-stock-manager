@@ -1,5 +1,3 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/configuracoes_pages.dart';
 import 'package:flutter_application_1/pages/login_pages.dart';
@@ -9,8 +7,6 @@ import 'package:flutter_application_1/pages/widgets_pages.dart';
 import 'package:flutter_application_1/pages/consulta_page.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,16 +15,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
-      home: const Cadastro(),
+      home: Cadastro(),
     );
   }
 }
 
 class Cadastro extends StatelessWidget {
   final double appBarTopMargin = 0.0; // Margem superior do AppBar
-  final double appBarBottomMargin = 0.0;
-
-  const Cadastro({super.key}); // Margem inferior do AppBar
+  final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +33,8 @@ class Cadastro extends StatelessWidget {
           margin:
               EdgeInsets.only(top: appBarTopMargin, bottom: appBarBottomMargin),
           child: AppBar(
-            backgroundColor: const Color(0xFF00141b), // Definindo a cor preta
-            title: const Text(
+            backgroundColor: Color(0xFF00141b), // Definindo a cor preta
+            title: Text(
               'Cadastrar',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -59,13 +53,13 @@ class Cadastro extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: const Color(0xFF00141b),
+      backgroundColor: Color(0xFF00141b),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
@@ -74,13 +68,13 @@ class Cadastro extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   hintText: 'Nome do Produto',
-                  hintStyle: const TextStyle(
+                  hintStyle: TextStyle(
                     color: Colors.black45,
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
                   ),
                 ),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Poppins',
                   color: Colors.black,
@@ -88,7 +82,7 @@ class Cadastro extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
@@ -97,13 +91,13 @@ class Cadastro extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   hintText: 'Fornecedor',
-                  hintStyle: const TextStyle(
+                  hintStyle: TextStyle(
                     color: Colors.black45,
                     fontWeight: FontWeight.w400,
                     fontSize: 16,
                   ),
                 ),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Poppins',
                   color: Colors.black,
@@ -114,12 +108,12 @@ class Cadastro extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 16.0, horizontal: 8.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                   child: Container(
                     width: 150,
                     height: 50,
-                    color: const Color(0xFF00141b),
+                    color: Color(0xFF00141b),
                     child: Center(
                       child: TextField(
                         decoration: InputDecoration(
@@ -129,13 +123,13 @@ class Cadastro extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           hintText: 'Preço',
-                          hintStyle: const TextStyle(
+                          hintStyle: TextStyle(
                             color: Colors.black45,
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
                           ),
                         ),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'Poppins',
                           color: Colors.black,
@@ -145,12 +139,12 @@ class Cadastro extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 16.0, horizontal: 8.0),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                   child: Container(
                     width: 150,
                     height: 50,
-                    color: const Color(0xFF00141b),
+                    color: Color(0xFF00141b),
                     child: Center(
                       child: TextField(
                         decoration: InputDecoration(
@@ -160,13 +154,13 @@ class Cadastro extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20.0),
                           ),
                           hintText: 'Custo',
-                          hintStyle: const TextStyle(
+                          hintStyle: TextStyle(
                             color: Colors.black45,
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
                           ),
                         ),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'Poppins',
                           color: Colors.black,
@@ -181,7 +175,7 @@ class Cadastro extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -190,13 +184,13 @@ class Cadastro extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       hintText: 'Quantidade Estoque Depósito',
-                      hintStyle: const TextStyle(
+                      hintStyle: TextStyle(
                         color: Colors.black45,
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
                       ),
                     ),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
                       color: Colors.black,
@@ -204,7 +198,7 @@ class Cadastro extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: TextField(
                     decoration: InputDecoration(
                       filled: true,
@@ -213,17 +207,17 @@ class Cadastro extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       hintText: 'Descrição',
-                      hintStyle: const TextStyle(
+                      hintStyle: TextStyle(
                         color: Colors.black45,
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
+                      contentPadding: EdgeInsets.symmetric(
                           vertical: 50.0,
                           horizontal:
                               10.0), // Aumenta o tamanho da caixa de texto
                     ),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Poppins',
                       color: Colors.black,
@@ -233,17 +227,15 @@ class Cadastro extends StatelessWidget {
                 SizedBox(
                   height: 40, // Aumenta o tamanho vertical do botão de cadastro
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0xFF5271FF),
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                     ),
                     child: TextButton(
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()),
+                          MaterialPageRoute(builder: (context) => LoginPage()),
                         );
-                        // ignore: avoid_print
                         print('Botão 1 pressionado!');
                       },
                       child: const Center(
