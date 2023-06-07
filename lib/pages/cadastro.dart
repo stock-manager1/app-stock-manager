@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/configuracoes_pages.dart';
-import 'package:flutter_application_1/pages/login_pages.dart';
-import 'package:flutter_application_1/pages/recebimento_pages.dart';
-import 'package:flutter_application_1/pages/transferencia_pages.dart';
-import 'package:flutter_application_1/pages/widgets_pages.dart';
-import 'package:flutter_application_1/pages/consulta_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
+void main() async {
+  await dotenv.load();
   runApp(MyApp());
 }
 
@@ -25,8 +22,43 @@ class MyApp extends StatelessWidget {
 }
 
 class Cadastro extends StatelessWidget {
-  final double appBarTopMargin = 0.0; // Margem superior do AppBar
-  final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
+  final double appBarTopMargin = 0.0;
+  final double appBarBottomMargin = 0.0;
+
+  final TextEditingController nomeProdutoController = TextEditingController();
+  final TextEditingController qtdeEntradaController = TextEditingController();
+  final TextEditingController tipoController = TextEditingController();
+  final TextEditingController marcaController = TextEditingController();
+
+  final String? _host = dotenv.env['HOSTNAME'];
+
+  Future<void> cadastrarProduto() async {
+    var url = Uri.parse('$_host/user/login');
+    String nome = nomeProdutoController.text;
+    String quantidade = qtdeEntradaController.text;
+    String tipo = tipoController.text;
+    String marca = marcaController.text;
+
+    var cadastroRequest = {
+      'nome': nome,
+      'quantidade': quantidade,
+      'tipo': tipo,
+      'marca': marca,
+    };
+
+    print(cadastroRequest);
+
+    var response = await http.post(
+      url,
+      body: cadastroRequest,
+    );
+
+    if (response.statusCode == 200) {
+      print('Produto cadastrado com sucesso');
+    } else {
+      print('Erro ao cadastrar o produto');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +67,7 @@ class Cadastro extends StatelessWidget {
         preferredSize:
             Size.fromHeight(80.0 + appBarTopMargin + appBarBottomMargin),
         child: AppBar(
-          backgroundColor: Color(0xFF00141b), // Definindo a cor preta
+          backgroundColor: Color(0xFF00141b),
           title: Text(
             'Cadastrar',
             style: TextStyle(
@@ -45,145 +77,144 @@ class Cadastro extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          actions: [
-            Image.asset(
-              'assets/images/Stock_Manager_logo.png',
-              width: 80.0,
-              height: 80.0,
-            ),
-          ],
         ),
       ),
       backgroundColor: Color(0xFF00141b),
       body: SingleChildScrollView(
-  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start, // Alinha os TextField à esquerda
-    children: [
-      SizedBox(height: 16.0),
-      Container(
-        width: 350.0,
-        child: TextField(
-          textAlign: TextAlign.left, // Alinha o texto à esquerda
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16.0),
+            Container(
+              width: 370.0,
+              child: TextField(
+                controller: nomeProdutoController,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  hintText: 'Nome do Produto',
+                  hintStyle: TextStyle(
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+              ),
             ),
-            hintText: 'Nome do Produto',
-            hintStyle: TextStyle(
-              color: Colors.black45,
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
+            SizedBox(height: 60.0),
+            Container(
+              width: 370.0,
+              child: TextField(
+                controller: qtdeEntradaController,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  hintText: 'Qtde de Entrada',
+                  hintStyle: TextStyle(
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+              ),
             ),
-          ),
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            color: Colors.black,
-          ),
+            SizedBox(height: 60.0),
+            Container(
+              width: 370.0,
+              child: TextField(
+                controller: tipoController,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  hintText: 'Tipo',
+                  hintStyle: TextStyle(
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 60.0),
+            Container(
+              width: 370.0,
+              child: TextField(
+                controller: marcaController,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  hintText: 'Marca',
+                  hintStyle: TextStyle(
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                ),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Poppins',
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            SizedBox(height: 60.0),
+            SizedBox(
+              height: 40,
+              width: 500,
+              child: ElevatedButton(
+                onPressed: () {
+                  cadastrarProduto();
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF5271FF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Text(
+                  'Cadastrar',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
-      SizedBox(height: 60.0),
-      Container(
-        width: 200.0,
-        child: TextField(
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            hintText: 'Qtde de Entrada',
-            hintStyle: TextStyle(
-              color: Colors.black45,
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-            ),
-          ),
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            color: Colors.black,
-          ),
-        ),
-      ),
-      SizedBox(height: 60.0),
-      Container(
-        width: 200.0,
-        child: TextField(
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            hintText: 'Tipo',
-            hintStyle: TextStyle(
-              color: Colors.black45,
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-            ),
-          ),
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            color: Colors.black,
-          ),
-        ),
-      ),
-      SizedBox(height: 60.0),
-      Container(
-        width: 200.0,
-        child: TextField(
-          textAlign: TextAlign.left,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            hintText: 'Marca',
-            hintStyle: TextStyle(
-              color: Colors.black45,
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-            ),
-          ),
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            color: Colors.black,
-          ),
-        ),
-      ),
-      SizedBox(height: 60.0),
-      SizedBox(
-        height: 40,
-        width: 500,
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            primary: Color(0xFF5271FF),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          child: Text(
-            'Cadastrar',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    ],
-  ),
-),
     );
   }
 }
