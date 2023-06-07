@@ -207,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<http.Response> _logar() async {
-    var url = Uri.parse('http://192.168.1.13:8000/user/login');
+    var url = Uri.parse('$_host/user/login');
 
     String email = _emailController.text;
     String password = _passwordController.text;

@@ -111,30 +111,32 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
         ),
         child: Column(
           children: [
-            const Padding(padding: EdgeInsets.only(left: 20)),
             Expanded(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 80),
+                    padding: const EdgeInsets.only(left: 8, right: 80),
                     child: Text(
                       stockCard.title,
                       textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: Text(
-                      'Estoque:  ${stockCard.stock}',
-                      textAlign: TextAlign.end,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
+                    padding: const EdgeInsets.only(left: 10, right: 5),
+                    child: Expanded(
+                      child: Text(
+                        'Estoque: ${stockCard.stock}',
+                        textAlign: TextAlign.end,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
@@ -145,13 +147,14 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 9, right: 30),
+                  padding: EdgeInsets.only(left: 8, right: 30),
                   child: Text(
                     'Qtde Loja: ',
                     textAlign: TextAlign.end,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 17,
                       color: Colors.black,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
@@ -180,13 +183,14 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: EdgeInsets.only(left: 8),
                   child: Text(
                     'Qtde Deposito: ',
                     textAlign: TextAlign.start,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 17,
                       color: Colors.black,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
