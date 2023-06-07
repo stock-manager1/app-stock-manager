@@ -1,5 +1,4 @@
 // ignore_for_file: unused_import, avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
@@ -43,7 +42,7 @@ class Consulta extends StatelessWidget {
           centerTitle: true,
           actions: [
             Image.asset(
-              'assets/loogo.png',
+              'assets/images/Stock_Manager_logo.png',
               width: 80.0,
               height: 80.0,
             ),
@@ -78,7 +77,7 @@ class Consulta extends StatelessWidget {
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
-                  'assets/loogo.png',
+                  'assets/images/Stock_Manager_logo.png',
                   width: 80.0,
                   height: 80.0,
                 ),
