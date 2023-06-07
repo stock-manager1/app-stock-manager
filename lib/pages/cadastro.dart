@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -33,24 +35,24 @@ class Cadastro extends StatelessWidget {
   final String? _host = dotenv.env['HOSTNAME'];
 
   Future<void> cadastrarProduto() async {
-    var url = Uri.parse('$_host/user/login');
+    var url = Uri.parse('$_host/registerproduct');
     String nome = nomeProdutoController.text;
-    String quantidade = qtdeEntradaController.text;
+    int quantidade = int.parse(qtdeEntradaController.text);
     String tipo = tipoController.text;
     String marca = marcaController.text;
 
     var cadastroRequest = {
-      'nome': nome,
-      'quantidade': quantidade,
-      'tipo': tipo,
-      'marca': marca,
+      'name': nome,
+      'amount': quantidade,
+      'type': tipo,
+      'brand': marca,
     };
 
     print(cadastroRequest);
 
     var response = await http.post(
       url,
-      body: cadastroRequest,
+      body: jsonEncode(cadastroRequest),
     );
 
     if (response.statusCode == 200) {
