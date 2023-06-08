@@ -3,7 +3,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {
-  await dotenv.load();
   runApp(MyApp());
 }
 
@@ -25,25 +24,24 @@ class Cadastro extends StatelessWidget {
   final double appBarTopMargin = 0.0;
   final double appBarBottomMargin = 0.0;
 
-  final TextEditingController nomeProdutoController = TextEditingController();
-  final TextEditingController qtdeEntradaController = TextEditingController();
-  final TextEditingController tipoController = TextEditingController();
-  final TextEditingController marcaController = TextEditingController();
-
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController brandController = TextEditingController();
+  final TextEditingController typeController = TextEditingController();
+  //final TextEditingController amountController = TextEditingController();
   final String? _host = dotenv.env['HOSTNAME'];
 
   Future<void> cadastrarProduto() async {
-    var url = Uri.parse('$_host/user/login');
-    String nome = nomeProdutoController.text;
-    String quantidade = qtdeEntradaController.text;
-    String tipo = tipoController.text;
-    String marca = marcaController.text;
-
+    var url = Uri.parse('$_host/registerproduct');
+    print(url);
+    String name = nameController.text;
+    String brand = brandController.text;
+    String type = typeController.text;
+    //String amount = amountController.text;
     var cadastroRequest = {
-      'nome': nome,
-      'quantidade': quantidade,
-      'tipo': tipo,
-      'marca': marca,
+      'name': name,
+      'brand': brand,
+      'type': type,
+      //'amount': amount,
     };
 
     print(cadastroRequest);
@@ -89,7 +87,7 @@ class Cadastro extends StatelessWidget {
             Container(
               width: 370.0,
               child: TextField(
-                controller: nomeProdutoController,
+                controller: nameController,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
                   filled: true,
@@ -115,7 +113,7 @@ class Cadastro extends StatelessWidget {
             Container(
               width: 370.0,
               child: TextField(
-                controller: qtdeEntradaController,
+                //controller: amountController,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
                   filled: true,
@@ -141,7 +139,7 @@ class Cadastro extends StatelessWidget {
             Container(
               width: 370.0,
               child: TextField(
-                controller: tipoController,
+                controller: typeController,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
                   filled: true,
@@ -167,7 +165,7 @@ class Cadastro extends StatelessWidget {
             Container(
               width: 370.0,
               child: TextField(
-                controller: marcaController,
+                controller: brandController,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
                   filled: true,
