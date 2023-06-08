@@ -1,13 +1,126 @@
-// ignore_for_file: duplicate_import
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/widgets_pages.dart';
-
-class RecebimentoPage extends StatelessWidget {
+class RecebimentoPage extends StatefulWidget {
   const RecebimentoPage({Key? key});
+
+  @override
+  _RecebimentoPageState createState() => _RecebimentoPageState();
+}
+
+class _RecebimentoPageState extends State<RecebimentoPage> {
+  List<Product> productList = [
+    Product(
+      productName: 'JOELHO SOLD 20MM',
+      codigo: '001',
+      quantidade: '10',
+      isChecked: false,
+    ),
+    Product(
+      productName: 'TUBO 100MM ESG',
+      codigo: '002',
+      quantidade: '100',
+      isChecked: false,
+    ),
+  ];
+
+  void validateProducts() {
+    bool allChecked = productList.every((product) => product.isChecked);
+    if (allChecked) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text(
+              'Recebimento Conferido',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            content: const Text(
+              'Todos os produtos foram conferidos.',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  if (allChecked) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OpcaoPage()),
+                    );
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+                child: const Text(
+                  'Fechar',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text(
+              'Recebimento Incompleto',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+              ),
+            ),
+            content: const Text(
+              'Existem produtos não conferidos.',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.black,
+              ),
+            ),
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text(
+                  'Fechar',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,42 +153,47 @@ class RecebimentoPage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  children: const [
-                    SizedBox(height: 20),
-                    CustomCard(
+                  children: [
+                    const SizedBox(height: 20),
+                    const CustomCard(
                       numeroPedido: '123456',
                       fornecedor: 'Tigre Materiais',
                     ),
-                    SizedBox(height: 20),
-                    ProductCard(
-                      productName: 'JOELHO SOLD 20MM ',
-                      codigo: '001',
-                      quantidade: '10',
-                    ),
-                    ProductCard(
-                      productName: 'TUBO 100MM ESG',
-                      codigo: '002',
-                      quantidade: '100',
-                    ),
-                    ProductCard(
-                      productName: 'COLA 17G ',
-                      codigo: '003',
-                      quantidade: '36',
-                    ),
-                    ProductCard(
-                      productName: 'TUBO 20MM SOLD ',
-                      codigo: '004',
-                      quantidade: '60',
-                    ),
-                    ProductCard(
-                      productName: 'ANEL DE VEDAÇÃO ',
-                      codigo: '005',
-                      quantidade: '10',
-                    ),
+                    const SizedBox(height: 20),
+                    for (var product in productList)
+                      ProductCard(
+                        product: product,
+                        onChanged: (value) {
+                          setState(() {
+                            product.isChecked = value!;
+                          });
+                        },
+                      ),
                   ],
                 ),
               ),
-            )
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Color(0xFF5271FF),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+              child: ElevatedButton(
+                onPressed: validateProducts,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors
+                      .transparent, // Define a cor transparente como plano de fundo
+                  elevation: 0, // Remove a sombra do botão
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
+                child: const Text(
+                  'Conferir Recebimento',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -158,14 +276,12 @@ class CustomCard extends StatelessWidget {
 }
 
 class ProductCard extends StatefulWidget {
-  final String productName;
-  final String codigo;
-  final String quantidade;
+  final Product product;
+  final ValueChanged<bool?>? onChanged;
 
   const ProductCard({
-    required this.productName,
-    required this.codigo,
-    required this.quantidade,
+    required this.product,
+    this.onChanged,
   });
 
   @override
@@ -173,8 +289,6 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  bool isChecked = false;
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -193,7 +307,7 @@ class _ProductCardState extends State<ProductCard> {
                   Row(
                     children: [
                       Text(
-                        'Nome Produto: ${widget.productName}',
+                        'Nome Produto: ${widget.product.productName}',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -205,7 +319,7 @@ class _ProductCardState extends State<ProductCard> {
                   Row(
                     children: [
                       Text(
-                        'Código: ${widget.codigo}',
+                        'Código: ${widget.product.codigo}',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -217,7 +331,7 @@ class _ProductCardState extends State<ProductCard> {
                   Row(
                     children: [
                       Text(
-                        'Quantidade: ${widget.quantidade}',
+                        'Quantidade: ${widget.product.quantidade}',
                         style: const TextStyle(fontSize: 16),
                       ),
                     ],
@@ -231,10 +345,11 @@ class _ProductCardState extends State<ProductCard> {
                 IconButton(
                   onPressed: () {
                     setState(() {
-                      isChecked = !isChecked;
+                      widget.product.isChecked = !widget.product.isChecked;
+                      widget.onChanged?.call(widget.product.isChecked);
                     });
                   },
-                  icon: isChecked
+                  icon: widget.product.isChecked
                       ? const Icon(
                           Icons.check_circle,
                           color: Colors.green,
@@ -251,4 +366,18 @@ class _ProductCardState extends State<ProductCard> {
       ),
     );
   }
+}
+
+class Product {
+  final String productName;
+  final String codigo;
+  final String quantidade;
+  bool isChecked;
+
+  Product({
+    required this.productName,
+    required this.codigo,
+    required this.quantidade,
+    required this.isChecked,
+  });
 }
