@@ -3,86 +3,228 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/opcoes_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Stock Manager',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-      ),
-    );
-  }
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Consulta(),
+  ));
 }
 
 class Consulta extends StatelessWidget {
-  const Consulta({Key? key}) : super(key: key);
+  final double appBarTopMargin = 0.0; // Margem superior do AppBar
+  final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
 
   @override
   Widget build(BuildContext context) {
-    ThemeData(
-      fontFamily: 'Poppins',
-    );
     return Scaffold(
       appBar: PreferredSize(
         preferredSize:
-            const Size.fromHeight(40.0), // Define a altura desejada do AppBar
-        child: AppBar(
-          backgroundColor: const Color(0xFF00141b),
-          title: const Text(
-            'Consulta',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+            Size.fromHeight(80.0 + appBarTopMargin + appBarBottomMargin),
+        child: Container(
+          margin:
+              EdgeInsets.only(top: appBarTopMargin, bottom: appBarBottomMargin),
+          child: AppBar(
+            backgroundColor: Color(0xFF00141b), // Definindo a cor preta
+            title: Text(
+              'Consulta',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
+            centerTitle: true,
+            actions: [
+              Image.asset(
+                'assets/images/Stock_Manager_logo.png',
+                width: 80.0,
+                height: 80.0,
+              ),
+            ],
           ),
-          centerTitle: true,
-          actions: [
-            Image.asset(
-              'assets/images/Stock_Manager_logo.png',
-              width: 80.0,
-              height: 80.0,
-            ),
-          ],
         ),
       ),
+      backgroundColor: Color(0xFF00141b),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(15),
-          color: const Color(0xFF00141b),
+          color: Color(0xFF00141b), // Definindo a cor preta
+          margin: EdgeInsets.all(20), // Defina as margens desejadas aqui
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               search(),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: Column(
+              SizedBox(height: 25),
+              CustomCard(),
+              SizedBox(height: 30),
+              CustomCard2(
+                information1: 'Custom Information 1',
+                information2: 'Custom Information 2',
+                information3: 'Custom Information 3',
+                information4: 'Custom Information 4',
+                information5: 'Custom Information 5',
+                information6: 'Custom Information 6',
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomCard extends StatefulWidget {
+  @override
+  _CustomCardState createState() => _CustomCardState();
+}
+
+class _CustomCardState extends State<CustomCard> {
+  bool isExpanded = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+        });
+      },
+      child: Dismissible(
+        key: Key('card'),
+        direction: DismissDirection.endToStart,
+        confirmDismiss: (direction) async {
+          return await showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text("Confirmar exclusão"),
+              content: Text("Tem certeza de que deseja excluir este card?"),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text("Cancelar"),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text("Confirmar"),
+                ),
+              ],
+            ),
+          );
+        },
+        onDismissed: (direction) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Card excluído")),
+          );
+        },
+        background: Container(
+          color: Colors.red,
+          child: Icon(
+            Icons.delete,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20.0),
+        ),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.fastOutSlowIn,
+          height: isExpanded ? 280.0 : 180.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            color: Color(0xffFF914D),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: const [
-                    ButtonWithText(),
-                    SizedBox(height: 20),
-                    ButtonWithText1(),
-                    SizedBox(height: 20),
-                    ButtonWithText2(),
+                    Expanded(
+                      child: Text(
+                        'Cimento Royal',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        'RS 35,00',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 10),
-              Align(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  'assets/images/Stock_Manager_logo.png',
-                  width: 80.0,
-                  height: 80.0,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Expanded(
+                      child: Text(
+                        'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        'Qtde: 8',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                if (isExpanded)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Expanded(
+                        child: Text(
+                          'Informação 5',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          'Informação 6',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
           ),
         ),
       ),
@@ -90,212 +232,176 @@ class Consulta extends StatelessWidget {
   }
 }
 
-class ButtonWithText extends StatelessWidget {
-  const ButtonWithText({super.key});
+class CustomCard2 extends StatefulWidget {
+  final String information1;
+  final String information2;
+  final String information3;
+  final String information4;
+  final String information5;
+  final String information6;
+
+  const CustomCard2({
+    Key? key,
+    required this.information1,
+    required this.information2,
+    required this.information3,
+    required this.information4,
+    required this.information5,
+    required this.information6,
+  }) : super(key: key);
+
+  @override
+  _CustomCard2State createState() => _CustomCard2State();
+}
+
+class _CustomCard2State extends State<CustomCard2> {
+  bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Botão 1 pressionado!');
+        setState(() {
+          isExpanded = !isExpanded;
+        });
       },
-      child: Container(
-        width: 320, // Tamanho do card
-        height: 150, // Tamanho do card
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: const Color(0xffFF914D), // Cor de fundo do card
+      child: Dismissible(
+        key: Key('card'),
+        direction: DismissDirection.endToStart,
+        confirmDismiss: (direction) async {
+          return await showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text("Confirmar exclusão"),
+              content: Text("Tem certeza de que deseja excluir este card?"),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text("Cancelar"),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: Text("Confirmar"),
+                ),
+              ],
+            ),
+          );
+        },
+        onDismissed: (direction) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Card excluído")),
+          );
+        },
+        background: Container(
+          color: Colors.red,
+          child: Icon(
+            Icons.delete,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          alignment: Alignment.centerRight,
+          padding: EdgeInsets.only(right: 20.0),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Cimento Royal',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.fastOutSlowIn,
+          height: isExpanded ? 280.0 : 180.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            color: Color(0xffFF914D),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        widget.information1,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "RS 35,00",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    Expanded(
+                      child: Text(
+                        widget.information2,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.white),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        widget.information3,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Qtde: 8',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    Expanded(
+                      child: Text(
+                        widget.information4,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                        ),
+                      ),
                     ),
+                  ],
+                ),
+                if (isExpanded)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          widget.information5,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          widget.information6,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-}
-
-class ButtonWithText1 extends StatelessWidget {
-  const ButtonWithText1({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('Botão 1 pressionado!');
-      },
-      child: Container(
-        width: 320, // Tamanho do card
-        height: 150, // Tamanho do card
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: const Color(0xffFF914D), // Cor de fundo do card
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Telha Brasilit',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "RS 90,00",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.white),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Qtde: 5',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonWithText2 extends StatelessWidget {
-  const ButtonWithText2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('Botão 1 pressionado!');
-      },
-      child: Container(
-        width: 320, // Tamanho do card
-        height: 150, // Tamanho do card
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), // Borda redonda
-          color: const Color(0xffFF914D), // Cor de fundo do card
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Escada',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      "RS 130,00",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Expanded(
-                    child: Text(
-                      'Lorem Ipsum Lorem Ipsum Lorem Ipsum ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.white),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Qtde: 2',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: Consulta(),
-  ));
 }

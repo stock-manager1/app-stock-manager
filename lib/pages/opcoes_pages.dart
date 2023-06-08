@@ -74,7 +74,7 @@ class OpcaoPage extends StatelessWidget {
                 text: 'Consulta',
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Consulta()));
+                      builder: (context) => Consulta()));
                   // Ação ao pressionar o botão 1
                 },
               ),
