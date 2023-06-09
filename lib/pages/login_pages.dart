@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  bool _isLoading = false;
   final String? _host = dotenv.env['HOSTNAME'];
 
   @override
@@ -170,26 +170,33 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const Padding(padding: EdgeInsets.all(10)),
                           Container(
-                            decoration: const BoxDecoration(
-                              color: Color(0xFF5271FF),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF5271FF),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15)),
                             ),
-                            child: TextButton(
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  _login();
-                                }
-                              },
-                              child: const Center(
-                                child: Text(
-                                  'Entrar',
-                                  style: TextStyle(
-                                    color: Colors.white,
+                            child: _isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.white),
+                                    ),
+                                  )
+                                : TextButton(
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        _login();
+                                      }
+                                    },
+                                    child: const Center(
+                                      child: Text(
+                                        'Entrar',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
                           ),
                         ],
                       ),
@@ -221,6 +228,10 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() async {
     try {
+      setState(() {
+        _isLoading = true;
+      });
+
       final response = await _logar();
       if (response.statusCode == 200) {
         Navigator.of(context).push(
@@ -261,6 +272,10 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 }
