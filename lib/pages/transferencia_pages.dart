@@ -67,7 +67,7 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
         color: const Color(0xFF00141b),
         width: double.infinity,
         child: SingleChildScrollView(
-          // Wrap the main Column with SingleChildScrollView
+        
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

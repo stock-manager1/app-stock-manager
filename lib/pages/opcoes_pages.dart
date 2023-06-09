@@ -1,7 +1,4 @@
-// ignore_for_file: unused_import
-
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/dto/product_request.dart';
 import 'package:flutter_application_1/pages/cadastro.dart';
@@ -28,7 +25,7 @@ class OpcaoPage extends StatelessWidget {
           margin:
               EdgeInsets.only(top: appBarTopMargin, bottom: appBarBottomMargin),
           child: AppBar(
-            backgroundColor: const Color(0xFF00141b), // Definindo a cor preta
+            backgroundColor: const Color(0xFF00141b), 
             title: const Text(
               'Stock Manager',
               style: TextStyle(
@@ -48,7 +45,7 @@ class OpcaoPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: const Color(0xFF00141b), // Definindo a cor preta
+        color: const Color(0xFF00141b), 
         child: Center(
           child: GridView.count(
             crossAxisCount: 2, // Dois itens por linha
@@ -80,7 +77,7 @@ class OpcaoPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const RecebimentoPage()));
-                  // Ação ao pressionar o botão 3
+                  
                 },
               ),
               ButtonWithImage(
@@ -89,7 +86,7 @@ class OpcaoPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const TransferenciaPage()));
-                  // Ação ao pressionar o botão 4
+                  
                 },
               ),
               ButtonWithImage(
