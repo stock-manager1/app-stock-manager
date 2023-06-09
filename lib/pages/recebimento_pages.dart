@@ -58,7 +58,7 @@ class _RecebimentoPageState extends State<RecebimentoPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const OpcaoPage()),
+                          builder: (context) => OpcaoPage()),
                     );
                   } else {
                     Navigator.of(context).pop();
