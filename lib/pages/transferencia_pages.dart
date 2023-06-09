@@ -14,7 +14,6 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
     StockCard(title: 'CIMENTO 50 KG', stock: '10'),
     StockCard(title: 'ESCADA ALUMINIO', stock: '5'),
     StockCard(title: 'TELHA BRASILIT', stock: '20'),
-    StockCard(title: 'TUBO 100 MM ESG', stock: '100'),
   ];
 
   void incrementCounter(StockCard stockCard) {
@@ -67,7 +66,6 @@ class _TransferenciaPageState extends State<TransferenciaPage> {
         color: const Color(0xFF00141b),
         width: double.infinity,
         child: SingleChildScrollView(
-        
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
