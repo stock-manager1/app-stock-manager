@@ -1,6 +1,9 @@
 // ignore_for_file: unused_import
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/dto/product_request.dart';
 import 'package:flutter_application_1/pages/cadastro.dart';
 import 'package:flutter_application_1/pages/configuracoes_pages.dart';
 import 'package:flutter_application_1/pages/login_pages.dart';
@@ -8,29 +11,13 @@ import 'package:flutter_application_1/pages/recebimento_pages.dart';
 import 'package:flutter_application_1/pages/transferencia_pages.dart';
 import 'package:flutter_application_1/pages/widgets_pages.dart';
 import 'package:flutter_application_1/pages/consulta_page.dart';
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Stock Manager',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-      ),
-      home: const OpcaoPage(),
-    );
-  }
-}
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class OpcaoPage extends StatelessWidget {
   final double appBarTopMargin = 0.0; // Margem superior do AppBar
   final double appBarBottomMargin = 0.0;
 
   const OpcaoPage({super.key}); // Margem inferior do AppBar
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +60,10 @@ class OpcaoPage extends StatelessWidget {
                 image: const AssetImage('assets/images/card1.png'),
                 text: 'Consulta',
                 onPressed: () {
+                  
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => Consulta()));
-                  // Ação ao pressionar o botão 1
+                  
                 },
               ),
               ButtonWithImage(
