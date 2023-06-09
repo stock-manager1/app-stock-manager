@@ -10,7 +10,7 @@ class ConfigPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF00141b),
-        title: const Text('Transferência'),
+        title: const Text('Configurações'),
         actions: <Widget>[
           SizedBox(
             width: 70,
