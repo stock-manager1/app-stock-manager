@@ -19,16 +19,14 @@ class Consulta extends StatefulWidget {
 }
 
 class _ConsultaState extends State<Consulta> {
-  final double appBarTopMargin = 0.0; // Margem superior do AppBar
-  final double appBarBottomMargin = 0.0; // Margem inferior do AppBar
+  final double appBarTopMargin = 0.0;
+  final double appBarBottomMargin = 0.0;
   List<ProductRequest> products = [];
   final String? _host = dotenv.env['HOSTNAME'];
 
   @override
   void initState() {
     super.initState();
-
-    // Ação a ser executada ao carregar a página
     listarProdutos();
   }
 
@@ -56,7 +54,7 @@ class _ConsultaState extends State<Consulta> {
           margin:
               EdgeInsets.only(top: appBarTopMargin, bottom: appBarBottomMargin),
           child: AppBar(
-            backgroundColor: const Color(0xFF00141b), // Definindo a cor preta
+            backgroundColor: const Color(0xFF00141b),
             title: const Text(
               'Consulta',
               style: TextStyle(
@@ -78,8 +76,8 @@ class _ConsultaState extends State<Consulta> {
       backgroundColor: Color(0xFF00141b),
       body: SingleChildScrollView(
         child: Container(
-          color: Color(0xFF00141b), // Definindo a cor preta
-          margin: EdgeInsets.all(20), // Defina as margens desejadas aqui
+          color: Color(0xFF00141b),
+          margin: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

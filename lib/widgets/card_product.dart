@@ -110,22 +110,23 @@ class CardProductState extends State<CardProduct> {
                     Expanded(
                       child: Text(
                         widget.name,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontFamily: 'Poppins',
-                        ),
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                            fontSize: 26,
+                            color: Colors.black,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     Expanded(
                       child: Text(
-                        widget.type,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 17,
+                        'Tipo: ${widget.type}',
+                        textAlign: TextAlign.end,
+                        style: const TextStyle(
+                          fontSize: 18,
                           color: Colors.black,
                           fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
@@ -136,12 +137,13 @@ class CardProductState extends State<CardProduct> {
                   children: [
                     Expanded(
                       child: Text(
-                        widget.brand,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
+                        'Marca: ${widget.brand}',
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
+                          color: Colors.black,
                           fontFamily: 'Poppins',
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -149,9 +151,9 @@ class CardProductState extends State<CardProduct> {
                       child: Text(
                         'Qtde: ${widget.amount}',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
+                        style: const TextStyle(
+                          fontSize: 30,
+                          color: Colors.white,
                           fontFamily: 'Poppins',
                         ),
                       ),
