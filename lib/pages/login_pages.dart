@@ -1,6 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, avoid_print, use_build_context_synchronously
-
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -19,6 +16,8 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  bool _isLoading = false;
 
   final String? _host = dotenv.env['HOSTNAME'];
 
@@ -183,14 +182,23 @@ class _LoginPageState extends State<LoginPage> {
                                   _login();
                                 }
                               },
-                              child: const Center(
-                                child: Text(
-                                  'Entrar',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
+                              child: _isLoading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          Colors.white,
+                                        ),
+                                      ),
+                                    )
+                                  : const Center(
+                                      child: Text(
+                                        'Entrar',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                         ],
@@ -222,48 +230,31 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+
     try {
       final response = await _logar();
       if (response.statusCode == 200) {
-        // Login bem-sucedido, navegue para a próxima tela
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => OpcaoPage()),
         );
       } else {
         showDialog(
           context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('Erro de Login'),
-            content: const Text(
-                'Credenciais inválidas. Verifique seu email e senha.'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('OK'),
-              ),
-            ],
-          ),
+          builder: (context) => AlertDialog(),
         );
       }
     } catch (error) {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Erro de Login'),
-          content: const Text(
-              'Ocorreu um erro durante o login. Tente novamente mais tarde.'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        ),
+        builder: (context) => AlertDialog(),
       );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 }
